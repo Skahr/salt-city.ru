@@ -1,0 +1,9 @@
+{% extends 'SkahrSaltCityBundle::base.html.twig' %}
+{% block body -%}
+    <h1>Создание отзыва</h1>
+
+    {{ form(form) }}
+
+        <a href="{{ path('comment') }}">Назад</a>
+
+{% endblock %}

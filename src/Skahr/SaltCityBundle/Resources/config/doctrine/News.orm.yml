@@ -1,0 +1,14 @@
+Skahr\SaltCityBundle\Entity\News:
+    type: entity
+    table: news
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        newstext:
+            type: text
+        datecr:
+            type: datetime
+    lifecycleCallbacks:
+        prePersist: [ setDatecrValue ]

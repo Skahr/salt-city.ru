@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  		<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<title>{% block title %}Ваше здоровье в Ваших руках!{% endblock %} | СольCity</title>
+      	<!--[if lt IE 9]>
+      		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      	<![endif]-->
+      	{% block stylesheets %}
+      		<link href='http://fonts.googleapis.com/css?family=Marck+Script&subset=latin-ext,cyrillic' rel='stylesheet' type='text/css'>
+        	<link href='http://fonts.googleapis.com/css?family=Jura:600&subset=cyrillic' rel='stylesheet' type='text/css'>
+        	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        	<link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
+			<link href="{{ asset('css/salt.css') }}" rel="stylesheet">
+      	{% endblock %}
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+  	</head>
+  	<body>
+  		<div class="container">
+			<div class="header clearfix">
+        		<div class="pull-right"><h3>Записаться на сеанс в Новосибирске</h3><h2 style="text-align: center">380-90-04</h2></div>
+        		<h3 class="text-muted"><a href="{{ path('SkahrSaltCityBundle_homepage') }}"><img src="{{ asset('images/logo.png') }}"/></a></h3>
+      		</div>
+
+			<div class="navbar-wrapper">
+
+				<nav class="navbar navbar-static-top">
+
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li class="{{ app.request.attributes.get('_route') == 'SkahrSaltCityBundle_homepage' ? 'active' }}"><a href="{{ path('SkahrSaltCityBundle_homepage') }}">Главная</a></li>
+							<li class="dropdown {{ 'SkahrSaltCityBundle_salt' in app.request.attributes.get('_route') ? 'active' }}"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Соляная пещера <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="{{ path('SkahrSaltCityBundle_salt') }}">О соляной пещере</a></li>
+									<li><a href="{{ path('SkahrSaltCityBundle_salt_photo') }}">Фото</a></li>
+									<li><a href="{{ path('SkahrSaltCityBundle_salt_rules') }}">Правила посещения</a></li>
+									<li><a href="{{ path('SkahrSaltCityBundle_salt_contraindications') }}">Противопоказания</a></li>
+									<li><a href="{{ path('SkahrSaltCityBundle_salt_cert') }}">Сертификаты</a></li>
+								</ul>
+							</li>
+							<li class="{{ app.request.attributes.get('_route') == 'price' ? 'active' }}"><a href="{{ path('price') }}">Цены</a></li>
+	<!--
+							<li><a href="#">Записаться на сеанс</a>
+	-->
+							<li class="{{ app.request.attributes.get('_route') == 'comment' ? 'active' }}"><a href="{{ path('comment') }}">Отзывы</a></li>
+							<li class="{{ app.request.attributes.get('_route') == 'SkahrSaltCityBundle_contacts' ? 'active' }}"><a href="{{ path('SkahrSaltCityBundle_contacts') }}">Контакты</a></li>
+							{% if app.session.get('login') %}
+								<li><a href="{{ path('SkahrSaltCityBundle_logout') }}">Выйти из админки</a></li>
+							{% endif %}
+						</ul>
+					</div>
+				</nav>
+
+			</div>
+{% for flashMessage in app.session.flashbag.get('info') %}
+	<div class="alert alert-success" role="alert">{{ flashMessage }}</div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+	<div class="alert alert-danger" role="alert">{{ flashMessage }}</div>
+{% endfor %}
+                    
+                    
+                    
+                    {% block body %}{% endblock %}
+
+            <div id="footer">
+                {% block footer %}
+                    by Skahr, 2015{# 'now'|date('Y') #}
+                {% endblock %}
+            </div>
+
+        {% block javascripts %}
+            <!-- Bootstrap core JavaScript
+            ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+            
+            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+            <script src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
+        {% endblock %}
+		</div>
+    </body>
+</html>

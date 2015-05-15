@@ -1,0 +1,24 @@
+Skahr\SaltCityBundle\Entity\Comment:
+    type: entity
+    table: comment
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        username:
+            type: string
+            length: 255
+        usermessage:
+            type: text
+        status:
+            type: integer
+            nullable: true
+            default: 0
+        adminreply:
+            type: text
+            nullable: true
+        datecr:
+            type: datetime
+    lifecycleCallbacks:
+        prePersist: [ setDatecrValue ]

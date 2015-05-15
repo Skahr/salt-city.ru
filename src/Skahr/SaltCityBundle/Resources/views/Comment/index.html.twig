@@ -1,0 +1,76 @@
+{% extends 'SkahrSaltCityBundle::base.html.twig' %}
+
+{% block title %}Отзывы{% endblock%}
+{% block body %}
+    <h2>Отзывы:</h2>
+	
+    	{{ form(form) }}
+
+
+<br/><br/>
+
+
+<div class="count">
+    Отзывов: {{ pagination.getTotalItemCount }} 
+</div>
+{#
+<table class="table">
+
+{% for comment in pagination %}
+<tr>
+	<tr>
+		<td class="text-right">{{ comment.username }}</td>
+		<td>
+			{% if comment.datecr %}
+        	<small>{{ comment.datecr|date('Y.m.d H:i') }} </small>
+        	{% endif %}
+		</td>
+		<td>
+			{% if app.session.get('login') %}
+                <a href="{{ path('comment_edit', { 'id': comment.id }) }}">Править</a>
+            {% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td colspan="2">{{ comment.usermessage }}</td>
+	</tr>
+	{% if comment.adminreply %}
+	<tr>
+		<td class="text-right">СольCity</td>
+		<td colspan="2">{{ comment.adminreply }}</td>
+	</tr>
+	{% endif %}
+</tr>	
+{% endfor %}
+</table>
+#}
+
+{% for comment in pagination %}
+
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+	<div class="panel-heading">
+		{{ comment.username }}:
+		{% if comment.datecr %}
+        	<small>   {{ comment.datecr|date('Y.m.d H:i') }}</small>
+		{% endif %}
+		{% if app.session.get('login') %}
+            <a href="{{ path('comment_edit', { 'id': comment.id }) }}">Править</a>
+		{% endif %}
+	</div>
+  	<div class="panel-body">
+    	<p>{{ comment.usermessage }}</p>
+  	</div>
+	{% if comment.adminreply %}
+		<table class="table table-bordered">
+			<tr><td class="text-right" width=20%>СольCity:</td><td>{{ comment.adminreply }}</td></tr>
+		</table>
+	{% endif %}
+</div>
+{% endfor %}
+<nav>
+    {{ knp_pagination_render(pagination) }}
+</nav>
+
+{% endblock %}

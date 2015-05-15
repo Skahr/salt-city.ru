@@ -1,0 +1,26 @@
+comment:
+    path:     /
+    defaults: { _controller: "SkahrSaltCityBundle:Comment:index" }
+
+comment_new:
+    path:     /new
+    defaults: { _controller: "SkahrSaltCityBundle:Comment:new" }
+
+comment_create:
+    path:     /create
+    defaults: { _controller: "SkahrSaltCityBundle:Comment:create" }
+    methods:  POST
+
+comment_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SkahrSaltCityBundle:Comment:edit" }
+
+comment_update:
+    path:     /{id}/update
+    defaults: { _controller: "SkahrSaltCityBundle:Comment:update" }
+    methods:  [POST, PUT]
+
+comment_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SkahrSaltCityBundle:Comment:delete" }
+    methods:  [POST, DELETE]

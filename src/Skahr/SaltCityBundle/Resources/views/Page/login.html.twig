@@ -1,0 +1,13 @@
+{% extends 'SkahrSaltCityBundle::base.html.twig' %}
+{% block title %}Вход{% endblock%}
+
+{% block body %}
+    <h2>Вход в админку</h2>
+    <div class="login">
+        <form method="post" action="{{ path('SkahrSaltCityBundle_login_check') }}">
+            <input type="email" name="email" placeholder="Логин" required>
+            <input type="password" name="pass" placeholder="Пароль" required>
+            <input type="submit" name="login" value="Вход">
+        </form>
+    </div>
+{% endblock %}

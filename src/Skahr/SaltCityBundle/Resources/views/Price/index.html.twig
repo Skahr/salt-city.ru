@@ -1,0 +1,29 @@
+{% extends 'SkahrSaltCityBundle::base.html.twig' %}
+{% block body -%}
+    <h1>Прайслист:</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Тариф</th>
+                <th>Стоимость сеанса</th>
+                <th>Подробности</th>
+                {% if app.session.get('login') %}<th>Админ</th>{% endif %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.pricename }}</td>
+                <td>{{ entity.price }}</td>
+                <td>{{ entity.priceinfo }}</td>
+                {% if app.session.get('login') %}<td><a href="{{ path('price_edit', { 'id': entity.id }) }}">править</a></td>{% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+	{% if app.session.get('login') %}
+	<br/>
+    <a href="{{ path('price_new') }}">создать новый тариф</a>
+    {% endif %}
+{% endblock %}

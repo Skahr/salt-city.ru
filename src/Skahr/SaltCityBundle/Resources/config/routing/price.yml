@@ -1,0 +1,26 @@
+price:
+    path:     /
+    defaults: { _controller: "SkahrSaltCityBundle:Price:index" }
+
+price_new:
+    path:     /new
+    defaults: { _controller: "SkahrSaltCityBundle:Price:new" }
+
+price_create:
+    path:     /create
+    defaults: { _controller: "SkahrSaltCityBundle:Price:create" }
+    methods:  POST
+
+price_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SkahrSaltCityBundle:Price:edit" }
+
+price_update:
+    path:     /{id}/update
+    defaults: { _controller: "SkahrSaltCityBundle:Price:update" }
+    methods:  [POST, PUT]
+
+price_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SkahrSaltCityBundle:Price:delete" }
+    methods:  [POST, DELETE]

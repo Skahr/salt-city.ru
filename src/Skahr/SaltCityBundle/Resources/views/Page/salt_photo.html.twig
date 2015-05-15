@@ -1,0 +1,18 @@
+{% extends 'SkahrSaltCityBundle::base.html.twig' %}
+{% block title %}Галерея{% endblock%}
+
+{% block body %}
+    <h2>Фото соляной пещеры</h2>
+    
+
+
+
+    <div class="pics_large">
+        <img src="{{ asset('images/photos/pic' ~ id ~ '.jpg') }}"/>
+    </div>
+    <div class="pics_index">
+        {% for i in 1..6 %}
+            <a href="{{ path('SkahrSaltCityBundle_salt_photo', { 'id': i }) }}"><img src="{{ asset('images/photos/pic' ~ i ~ '.jpg') }}"/></a>
+        {% endfor %}
+    </div>
+{% endblock %}

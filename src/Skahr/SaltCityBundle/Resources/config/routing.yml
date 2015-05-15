@@ -1,0 +1,66 @@
+SkahrSaltCityBundle_sale:
+    resource: "@SkahrSaltCityBundle/Resources/config/routing/sale.yml"
+    prefix:   /sale
+
+SkahrSaltCityBundle_price:
+    resource: "@SkahrSaltCityBundle/Resources/config/routing/price.yml"
+    prefix:   /price
+
+SkahrSaltCityBundle_news:
+    resource: "@SkahrSaltCityBundle/Resources/config/routing/news.yml"
+    prefix:   /news
+
+SkahrSaltCityBundle_comment:
+    resource: "@SkahrSaltCityBundle/Resources/config/routing/comment.yml"
+    prefix:   /comment
+
+SkahrSaltCityBundle_homepage:
+    pattern:  /
+    defaults: { _controller: SkahrSaltCityBundle:Page:index }
+    requirements:
+        _method:  GET
+SkahrSaltCityBundle_contacts:
+    pattern: /contacts
+    defaults: { _controller: SkahrSaltCityBundle:Page:contacts }
+    requirements:
+        _method: GET
+SkahrSaltCityBundle_salt:
+    pattern: /salt
+    defaults: { _controller: SkahrSaltCityBundle:Page:salt }
+    requirements:
+        _method: GET
+SkahrSaltCityBundle_salt_photo:
+    pattern: /salt/photo/{id}
+    defaults: { _controller: SkahrSaltCityBundle:Page:saltPhoto, id: 1 }
+    requirements:
+        _method: GET
+SkahrSaltCityBundle_salt_rules:
+    pattern: /salt/rules
+    defaults: { _controller: SkahrSaltCityBundle:Page:saltRules }
+    requirements:
+        _method: GET
+SkahrSaltCityBundle_salt_contraindications:
+    pattern: /salt/contr
+    defaults: { _controller: SkahrSaltCityBundle:Page:saltContraindications }
+    requirements:
+        _method: GET
+SkahrSaltCityBundle_salt_cert:
+    pattern: /salt/cert
+    defaults: { _controller: SkahrSaltCityBundle:Page:saltCert }
+    requirements:
+        _method: GET
+SkahrSaltCityBundle_login:
+    pattern: /login
+    defaults: { _controller: SkahrSaltCityBundle:Page:login }
+    requirements:
+        _method: GET
+SkahrSaltCityBundle_login_check:
+    pattern: /login/check
+    defaults: { _controller: SkahrSaltCityBundle:Page:check }
+    requirements:
+        _method: POST
+SkahrSaltCityBundle_logout:
+    pattern: /logout
+    defaults: { _controller: SkahrSaltCityBundle:Page:logout }
+    requirements:
+        _method: GET

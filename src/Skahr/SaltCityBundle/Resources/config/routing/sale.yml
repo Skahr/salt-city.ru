@@ -1,0 +1,30 @@
+sale:
+    path:     /
+    defaults: { _controller: "SkahrSaltCityBundle:Sale:index" }
+
+sale_show:
+    path:     /{id}/show
+    defaults: { _controller: "SkahrSaltCityBundle:Sale:show" }
+
+sale_new:
+    path:     /new
+    defaults: { _controller: "SkahrSaltCityBundle:Sale:new" }
+
+sale_create:
+    path:     /create
+    defaults: { _controller: "SkahrSaltCityBundle:Sale:create" }
+    methods:  POST
+
+sale_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SkahrSaltCityBundle:Sale:edit" }
+
+sale_update:
+    path:     /{id}/update
+    defaults: { _controller: "SkahrSaltCityBundle:Sale:update" }
+    methods:  [POST, PUT]
+
+sale_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SkahrSaltCityBundle:Sale:delete" }
+    methods:  [POST, DELETE]

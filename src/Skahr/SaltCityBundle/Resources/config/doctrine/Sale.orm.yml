@@ -1,0 +1,18 @@
+Skahr\SaltCityBundle\Entity\Sale:
+    type: entity
+    table: sale
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        salestext:
+            type: text
+        status:
+            type: integer
+            nullable: true
+            default: 1
+        datecr:
+            type: datetime
+    lifecycleCallbacks:
+        prePersist: [ setDatecrValue ]

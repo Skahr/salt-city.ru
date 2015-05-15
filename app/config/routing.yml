@@ -1,0 +1,4 @@
+skahr_salt_city:
+    resource: "@SkahrSaltCityBundle/Resources/config/routing.yml"
+    prefix:   /
+

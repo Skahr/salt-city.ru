@@ -1,0 +1,17 @@
+Skahr\SaltCityBundle\Entity\Price:
+    type: entity
+    table: price
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        pricename:
+            type: string
+            length: 255
+            unique: true
+        price:
+            type: integer
+        priceinfo:
+            type: text
+            nullable: true

@@ -1,0 +1,15 @@
+
+{% extends 'SkahrSaltCityBundle::base.html.twig' %}
+{% block body -%}
+{% if app.session.get('login') %}
+    <h1>Редактирование тарифа</h1>
+
+    {{ form(edit_form) }}
+	{{ form(delete_form) }}
+	<br/>
+	<a href="{{ path('price') }}">назад</a>
+	
+{% else %}
+	<div class="alert alert-danger" role="alert">Доступ запрещен</div>
+{% endif %}
+{% endblock %}
