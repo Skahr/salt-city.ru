@@ -1,9 +1,8 @@
 {% extends 'SkahrSaltCityBundle::base.html.twig' %}
 {% block body -%}
+<div class="container">
     <h1>Создание отзыва</h1>
-
+	<a href="{{ path('comment') }}">Назад</a>
     {{ form(form) }}
-
-        <a href="{{ path('comment') }}">Назад</a>
-
+</div>
 {% endblock %}

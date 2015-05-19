@@ -19,13 +19,37 @@ class SaleController extends Controller
      * Lists all Sale entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SkahrSaltCityBundle:Sale')->findAll();
-
+        $entities = $em->getRepository('SkahrSaltCityBundle:Sale')->findBy(array(), array('datecr' => 'DESC'));
+		
+		$paginator  = $this->get('knp_paginator');
+    	$pagination = $paginator->paginate(
+        $entities,
+        $request->query->get('page', 1)/*page number*/,
+        10/*limit per page*/
+    	);
+		$pagination->setTemplate('KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig');
+		
         return $this->render('SkahrSaltCityBundle:Sale:index.html.twig', array(
+            'entities' => $entities,
+			'pagination' => $pagination,
+        ));
+    }
+	public function topSalesAction($max)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+                'SELECT p.salestext
+                FROM SkahrSaltCityBundle:Sale p
+                WHERE p.status = 1
+                ORDER BY p.datecr DESC'
+            )->setMaxResults($max);
+		$entities = $query->getResult();
+        
+        return $this->render('SkahrSaltCityBundle::sales.html.twig', array(
             'entities' => $entities,
         ));
     }
@@ -44,7 +68,7 @@ class SaleController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('sale_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('sale'));
         }
 
         return $this->render('SkahrSaltCityBundle:Sale:new.html.twig', array(
@@ -67,7 +91,7 @@ class SaleController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Создать'));
 
         return $form;
     }
@@ -147,7 +171,7 @@ class SaleController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Сохранить'));
 
         return $form;
     }
@@ -217,7 +241,7 @@ class SaleController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('sale_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Удалить'))
             ->getForm()
         ;
     }

@@ -11,8 +11,8 @@
       	{% block stylesheets %}
       		<link href='http://fonts.googleapis.com/css?family=Marck+Script&subset=latin-ext,cyrillic' rel='stylesheet' type='text/css'>
         	<link href='http://fonts.googleapis.com/css?family=Jura:600&subset=cyrillic' rel='stylesheet' type='text/css'>
+			<link href="{{ asset('fonts/webserveroff_regular/stylesheet.css') }}" rel='stylesheet' type="text/css">
         	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-        	<link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
 			<link href="{{ asset('css/salt.css') }}" rel="stylesheet">
       	{% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
@@ -24,15 +24,18 @@
 
   	</head>
   	<body>
+		<div class="wrap">
+		<a id="top"></a>
   		<div class="container">
-			<div class="header clearfix">
-        		<div class="pull-right"><h3>Записаться на сеанс в Новосибирске</h3><h2 style="text-align: center">380-90-04</h2></div>
-        		<h3 class="text-muted"><a href="{{ path('SkahrSaltCityBundle_homepage') }}"><img src="{{ asset('images/logo.png') }}"/></a></h3>
+			<table style="width: 100%"><tr><td rowspan="2" width="440px">
+			<div>
+        		
+        		<a href="{{ path('SkahrSaltCityBundle_homepage') }}"><img src="{{ asset('images/logo.png') }}"/></a>
       		</div>
-
-			<div class="navbar-wrapper">
-
-				<nav class="navbar navbar-static-top">
+				</td><td style="padding-left: 25px;"><h3 style="line-height: 80%; margin-top: 40px">Записаться на сеанс в Новосибирске</h3><h2 style="line-height: 80%;">380-90-04</h2></td>
+				</tr>
+<tr><td>
+				<nav class="navbar navbar-static-bottom">
 
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
@@ -40,43 +43,43 @@
 							<li class="dropdown {{ 'SkahrSaltCityBundle_salt' in app.request.attributes.get('_route') ? 'active' }}"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Соляная пещера <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="{{ path('SkahrSaltCityBundle_salt') }}">О соляной пещере</a></li>
-									<li><a href="{{ path('SkahrSaltCityBundle_salt_photo') }}">Фото</a></li>
-									<li><a href="{{ path('SkahrSaltCityBundle_salt_rules') }}">Правила посещения</a></li>
+									<li><a href="{{ path('SkahrSaltCityBundle_salt_photo') }}">Галерея</a></li>
+									<li><a href="{{ path('SkahrSaltCityBundle_salt_indications') }}">Показания</a></li>
 									<li><a href="{{ path('SkahrSaltCityBundle_salt_contraindications') }}">Противопоказания</a></li>
+									<li><a href="{{ path('SkahrSaltCityBundle_salt_rules') }}">Правила посещения</a></li>
 									<li><a href="{{ path('SkahrSaltCityBundle_salt_cert') }}">Сертификаты</a></li>
 								</ul>
 							</li>
-							<li class="{{ app.request.attributes.get('_route') == 'price' ? 'active' }}"><a href="{{ path('price') }}">Цены</a></li>
-	<!--
-							<li><a href="#">Записаться на сеанс</a>
-	-->
+							<li class="{{ app.request.attributes.get('_route') == 'price' ? 'active' }}"><a href="{{ path('SkahrSaltCityBundle_homepage') }}#prices">Цены</a></li>
+							<li><a href="{{ path('SkahrSaltCityBundle_homepage') }}#contacts">Контакты</a></li>
 							<li class="{{ app.request.attributes.get('_route') == 'comment' ? 'active' }}"><a href="{{ path('comment') }}">Отзывы</a></li>
-							<li class="{{ app.request.attributes.get('_route') == 'SkahrSaltCityBundle_contacts' ? 'active' }}"><a href="{{ path('SkahrSaltCityBundle_contacts') }}">Контакты</a></li>
 							{% if app.session.get('login') %}
-								<li><a href="{{ path('SkahrSaltCityBundle_logout') }}">Выйти из админки</a></li>
+								<li><a href="{{ path('SkahrSaltCityBundle_admin') }}">Админка</a></li>
+								<li><a href="{{ path('SkahrSaltCityBundle_logout') }}">Выйти</a></li>
 							{% endif %}
 						</ul>
 					</div>
 				</nav>
+	</td></tr></table>
+			
 
-			</div>
+
 {% for flashMessage in app.session.flashbag.get('info') %}
 	<div class="alert alert-success" role="alert">{{ flashMessage }}</div>
 {% endfor %}
 {% for flashMessage in app.session.flashbag.get('error') %}
 	<div class="alert alert-danger" role="alert">{{ flashMessage }}</div>
 {% endfor %}
-                    
-                    
-                    
-                    {% block body %}{% endblock %}
-
+            </div>
+               {% block sales %}{% endblock %}
+               {% block body %}{% endblock %}
+</div>
             <div id="footer">
                 {% block footer %}
-                    by Skahr, 2015{# 'now'|date('Y') #}
+				<a href="#top"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a>
+					<p>СольCity входит в содружество Галофорт</p><p>2015</p>
                 {% endblock %}
             </div>
-
         {% block javascripts %}
             <!-- Bootstrap core JavaScript
             ================================================== -->
@@ -87,6 +90,6 @@
             <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
             <script src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
         {% endblock %}
-		</div>
+		
     </body>
 </html>

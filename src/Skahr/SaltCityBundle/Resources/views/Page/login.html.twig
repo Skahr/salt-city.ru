@@ -2,6 +2,7 @@
 {% block title %}Вход{% endblock%}
 
 {% block body %}
+<div class="container">
     <h2>Вход в админку</h2>
     <div class="login">
         <form method="post" action="{{ path('SkahrSaltCityBundle_login_check') }}">
@@ -10,4 +11,5 @@
             <input type="submit" name="login" value="Вход">
         </form>
     </div>
+</div>
 {% endblock %}

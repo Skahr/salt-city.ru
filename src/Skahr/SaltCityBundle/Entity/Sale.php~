@@ -115,32 +115,4 @@ class Sale
     {
         $this->datecr = new \DateTime();
     }
-    /**
-     * @var integer
-     */
-    private $cat;
-
-
-    /**
-     * Set cat
-     *
-     * @param integer $cat
-     * @return Sale
-     */
-    public function setCat($cat)
-    {
-        $this->cat = $cat;
-
-        return $this;
-    }
-
-    /**
-     * Get cat
-     *
-     * @return integer 
-     */
-    public function getCat()
-    {
-        return $this->cat;
-    }
 }

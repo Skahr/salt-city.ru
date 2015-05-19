@@ -2,75 +2,51 @@
 
 {% block title %}Отзывы{% endblock%}
 {% block body %}
-    <h2>Отзывы:</h2>
+<div class="container">
+    <h2>Отзывы<span class="label label-default" style="font-size: 90%; margin-left: 20px; ">{{ pagination.getTotalItemCount }}</span></h2>
 	
+	<div class="form">
     	{{ form(form) }}
 
 
-<br/><br/>
-
-
-<div class="count">
-    Отзывов: {{ pagination.getTotalItemCount }} 
-</div>
-{#
-<table class="table">
-
-{% for comment in pagination %}
-<tr>
-	<tr>
-		<td class="text-right">{{ comment.username }}</td>
-		<td>
-			{% if comment.datecr %}
-        	<small>{{ comment.datecr|date('Y.m.d H:i') }} </small>
-        	{% endif %}
-		</td>
-		<td>
-			{% if app.session.get('login') %}
-                <a href="{{ path('comment_edit', { 'id': comment.id }) }}">Править</a>
-            {% endif %}
-		</td>
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="2">{{ comment.usermessage }}</td>
-	</tr>
-	{% if comment.adminreply %}
-	<tr>
-		<td class="text-right">СольCity</td>
-		<td colspan="2">{{ comment.adminreply }}</td>
-	</tr>
-	{% endif %}
-</tr>	
-{% endfor %}
-</table>
-#}
+	</div>
 
 {% for comment in pagination %}
 
-<div class="panel panel-primary">
+<div class="panel panel-info">
   <!-- Default panel contents -->
 	<div class="panel-heading">
-		{{ comment.username }}:
+		<h4 style="color: black;">{{ comment.username }}:</h4>
 		{% if comment.datecr %}
         	<small>   {{ comment.datecr|date('Y.m.d H:i') }}</small>
 		{% endif %}
 		{% if app.session.get('login') %}
             <a href="{{ path('comment_edit', { 'id': comment.id }) }}">Править</a>
+			{% if comment.status %}
+				<span class="label label-info">Виден для всех</span>
+			{% else %}
+				<span class="label label-warning">Скрыт для пользователей</span>
+			{% endif %}
 		{% endif %}
 	</div>
   	<div class="panel-body">
     	<p>{{ comment.usermessage }}</p>
   	</div>
 	{% if comment.adminreply %}
+	<div class="panel-footer">
+		<h4>Соль Сити:</h4>
+    	<p>{{ comment.adminreply }}</p>
+  	</div>
+<!--
 		<table class="table table-bordered">
 			<tr><td class="text-right" width=20%>СольCity:</td><td>{{ comment.adminreply }}</td></tr>
 		</table>
+-->
 	{% endif %}
 </div>
 {% endfor %}
 <nav>
     {{ knp_pagination_render(pagination) }}
 </nav>
-
+</div>
 {% endblock %}

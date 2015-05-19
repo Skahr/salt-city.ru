@@ -25,6 +25,10 @@ class PageController extends Controller
     {
         return $this->render('SkahrSaltCityBundle:Page:salt_rules.html.twig');
     }
+	public function saltIndicationsAction()
+    {
+        return $this->render('SkahrSaltCityBundle:Page:salt_indications.html.twig');
+    }
     public function saltContraindicationsAction()
     {
         return $this->render('SkahrSaltCityBundle:Page:salt_contr.html.twig');
@@ -37,6 +41,10 @@ class PageController extends Controller
     {
         return $this->render('SkahrSaltCityBundle:Page:login.html.twig');
     }
+	public function adminAction()
+    {
+        return $this->render('SkahrSaltCityBundle:Page:admin.html.twig');
+    }
     public function checkAction()
     {
         $session = new Session();
@@ -46,7 +54,7 @@ class PageController extends Controller
                 
                 $session->set('login', $_POST['email']);
 				$this->get('session')->getFlashBag()->set('info', 'Добро пожаловать, '.$session->get('login'));
-				return $this->redirect($this->generateUrl('SkahrSaltCityBundle_homepage'));
+				return $this->redirect($this->generateUrl('SkahrSaltCityBundle_admin'));
             }
 			else {
 				$this->get('session')->getFlashBag()->set('error', 'Неверные учетные данные');

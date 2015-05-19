@@ -1,7 +1,11 @@
 {% extends 'SkahrSaltCityBundle::base.html.twig' %}
+{% block title %}Цены{% endblock %}
 {% block body -%}
+<div class="container">
     <h1>Прайслист:</h1>
-
+	{% if app.session.get('login') %}
+    <a href="{{ path('price_new') }}">создать новый тариф</a>
+    {% endif %}
     <table class="table">
         <thead>
             <tr>
@@ -22,8 +26,6 @@
         {% endfor %}
         </tbody>
     </table>
-	{% if app.session.get('login') %}
-	<br/>
-    <a href="{{ path('price_new') }}">создать новый тариф</a>
-    {% endif %}
+	
+</div>
 {% endblock %}

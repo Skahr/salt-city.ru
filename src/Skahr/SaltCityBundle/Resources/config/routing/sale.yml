@@ -2,10 +2,6 @@ sale:
     path:     /
     defaults: { _controller: "SkahrSaltCityBundle:Sale:index" }
 
-sale_show:
-    path:     /{id}/show
-    defaults: { _controller: "SkahrSaltCityBundle:Sale:show" }
-
 sale_new:
     path:     /new
     defaults: { _controller: "SkahrSaltCityBundle:Sale:new" }

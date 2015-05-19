@@ -29,6 +29,19 @@ class PriceController extends Controller
             'entities' => $entities,
         ));
     }
+	public function mainPricesAction($max)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+                'SELECT p.pricename, p.price, p.priceinfo
+                FROM SkahrSaltCityBundle:Price p'
+            )->setMaxResults($max);
+		$entities = $query->getResult();
+        
+        return $this->render('SkahrSaltCityBundle::pricesblock.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
     /**
      * Creates a new Price entity.
      *

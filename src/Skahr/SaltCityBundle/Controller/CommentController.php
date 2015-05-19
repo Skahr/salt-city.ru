@@ -22,12 +22,14 @@ class CommentController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-	if($this->get('session')->get('login')) {$entities = $em->getRepository('SkahrSaltCityBundle:Comment')->findBy(array(), array('datecr' => 'DESC'));}
+		if($this->get('session')->get('login')) {
+			$entities = $em->getRepository('SkahrSaltCityBundle:Comment')
+				->findBy(array(), array('datecr' => 'DESC'));}
 		else {
-        $entities = $em->getRepository('SkahrSaltCityBundle:Comment')->createQueryBuilder('q')
-			->where('q.status = 1')
-			->orderBy('q.datecr', 'DESC')
-			->getQuery()->getResult();
+			$entities = $em->getRepository('SkahrSaltCityBundle:Comment')->createQueryBuilder('q')
+				->where('q.status = 1')
+				->orderBy('q.datecr', 'DESC')
+				->getQuery()->getResult();
 		}
 		$entity = new Comment();
 		$form   = $this->createCreateForm($entity);
@@ -35,7 +37,7 @@ class CommentController extends Controller
     	$pagination = $paginator->paginate(
         $entities,
         $request->query->get('page', 1)/*page number*/,
-        3/*limit per page*/
+        10/*limit per page*/
     	);
 		$pagination->setTemplate('KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig');
         return $this->render('SkahrSaltCityBundle:Comment:index.html.twig', array(

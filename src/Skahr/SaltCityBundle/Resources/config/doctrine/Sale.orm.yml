@@ -11,7 +11,8 @@ Skahr\SaltCityBundle\Entity\Sale:
         status:
             type: integer
             nullable: true
-            default: 1
+        cat:
+            type: integer
         datecr:
             type: datetime
     lifecycleCallbacks:

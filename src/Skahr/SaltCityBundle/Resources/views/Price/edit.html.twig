@@ -1,6 +1,7 @@
 
 {% extends 'SkahrSaltCityBundle::base.html.twig' %}
 {% block body -%}
+<div class="container">
 {% if app.session.get('login') %}
     <h1>Редактирование тарифа</h1>
 
@@ -12,4 +13,5 @@
 {% else %}
 	<div class="alert alert-danger" role="alert">Доступ запрещен</div>
 {% endif %}
+</div>
 {% endblock %}

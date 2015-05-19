@@ -1,0 +1,25 @@
+{% extends 'SkahrSaltCityBundle::base.html.twig' %}
+{% block title %}Админка{% endblock%}
+
+{% block body %}
+<div class="container">
+	{% if app.session.get('login') %}
+    <h2>Управление контентом</h2>
+	<div><h3>Сменить пароль</h3></div>
+	<p>
+		<a href="{{ path('comment') }}">Все отзывы</a>
+		<a href="{{ path('comment_new') }}">Написать отзыв</a>
+	</p>
+	<p>
+		<a href="{{ path('sale') }}">Все события</a>
+		<a href="{{ path('sale_new') }}">Создать событие</a>
+	</p>
+	<p>
+		<a href="{{ path('price') }}">Все тарифы</a>
+		<a href="{{ path('price_new') }}">Создать тариф</a>
+	</p>
+	{% else %}
+	<div class="alert alert-danger" role="alert">Доступ запрещен</div>
+{% endif %}
+</div>
+{% endblock %}

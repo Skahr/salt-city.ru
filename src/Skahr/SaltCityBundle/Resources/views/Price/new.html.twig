@@ -1,8 +1,8 @@
 {% extends 'SkahrSaltCityBundle::base.html.twig' %}
 {% block body -%}
+<div class="container">
     <h1>Создать тариф</h1>
-
-    {{ form(form) }}
-	<br/>
 	<a href="{{ path('price') }}">назад</a>
+    {{ form(form) }}
+</div>
 {% endblock %}

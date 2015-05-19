@@ -33,8 +33,11 @@ class CommentType extends AbstractType
 				
 				if($this->session->get('login')) {
 			
-            $form->add('adminreply', 'textarea', array('label' => 'Ответ на отзыв', 'required' => false));
-            $form->add('status', 'integer', array('attr' => array('size' => 1, 'min' => 0, 'max' => 1), 'label' => 'Статус'));}
+            		$form->add('adminreply', 'textarea', array('attr' => array('placeholder' => 'Необязательное поле'), 'label' => 'Ответ на отзыв', 'required' => false));
+            		$form->add('status', 'choice', array(
+						'choices' => array('0' => 'Скрывать отзыв', '1' => 'Показывать отзыв'),
+						'label' => 'Статус'));
+				}
            }); 
     }
     

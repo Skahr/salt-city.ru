@@ -1,5 +1,6 @@
 
 body {
+  height:100%;
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
@@ -21,7 +22,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #1d959a;
+  color: #1d959a; font-family: Jura, sans-serif;
 }
 
 .page-header {
@@ -270,3 +271,39 @@ input[type="color"],
 .img_index img {
 	max-width: 300px; height: auto; padding: 5px;
 }
+.sale_block { margin-bottom: 20px }
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+.carousel-caption { font-family: 'Jura', sans-serif; text-shadow: 2px 2px black; position: absolute;  /* подробнее про position: absolute; */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto; width: 60%; display: table;
+/*    background: rgba(0, 0, 0, 0.5);*/
+}
+.carousel-caption h1 {
+	color: white; pointer-events: none; padding: 10px; font-family: 'web_serveroffregular', sans-serif; font-size: 400%;
+}
+.carousel-caption a { color: white; text-shadow: 2px 2px black; font-size: 25px; }
+.carousel { margin-bottom: 40px }
+.text-justified p { text-align: justify }
+.con {margin-top: 30px;}
+.item-photo {
+    float:left;
+    width:33%;
+    margin:0 0.5% 10px 0;
+    padding:0px;
+}
+ 
+.item-photo img { width:100%; }
+ 
+.con .item-photo:nth-child(3n+3) {
+    margin-right:0px;
+}
+.form { margin-top: 40px; margin-bottom: 40px; }
+.wrap {
+	min-height: 600px; padding-bottom: 100px;
+}
+#footer {background: #115f62; color: #c3c1c1; text-align: center; padding: 10px; margin-top: -100px; }

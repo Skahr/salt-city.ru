@@ -1,14 +1,16 @@
 {% extends 'SkahrSaltCityBundle::base.html.twig' %}
-{% block body -%}
-    <h1>Sales creation</h1>
 
+{% block body -%}
+<div class="container">
+{% if app.session.get('login') %}
+
+    <h1>Создание события</h1>
+    <a href="{{ path('sale') }}">назад</a>
+	<br/>
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('sale') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+{% else %}
+	<div class="alert alert-danger" role="alert">Доступ запрещен</div>
+{% endif %}
+</div>
 {% endblock %}

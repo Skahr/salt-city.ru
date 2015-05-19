@@ -1,44 +1,59 @@
 {% extends 'SkahrSaltCityBundle::base.html.twig' %}
+{% block title %}Акции{% endblock %}
 {% block body -%}
-    <h1>Sales list</h1>
-
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Text</th>
-                <th>Status</th>
-                <th>Datecr</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="container">
+    <h1>События</h1>
+	{% if app.session.get('login') %}
+	<a href="{{ path('sale_new') }}">Создать новое событие</a>
+	{% endif %}
+{#
         {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('sale_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.salestext }}</td>
-                <td>{{ entity.status }}</td>
-                <td>{% if entity.datecr %}{{ entity.datecr|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('sale_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('sale_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
+		
+            {% if entity.cat %}
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+    				<h3 class="panel-title">Акция</h3>
+  				</div>
+			{% else %}
+			<div class="panel panel-info">
+				<div class="panel-heading">
+    				<h3 class="panel-title">Новости</h3>
+  				</div>
+			{% endif %}
+			<div class="panel-body">
+				<p>{{ entity.salestext }}</p>
+				<small>{% if entity.datecr %}{{ entity.datecr|date('Y-m-d') }}{% endif %}</small>
+				{% if app.session.get('login') %}
+        		<a href="{{ path('sale_edit', { 'id': entity.id }) }}">Править</a>
+				{% endif %}
+			</div>
+			</div>
         {% endfor %}
-        </tbody>
-    </table>
+#}
+	{% for sale in pagination %}
+		{% if sale.cat %}
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+    				<h3 class="panel-title">Акция</h3>
+  				</div>
+		{% else %}
+			<div class="panel panel-info">
+				<div class="panel-heading">
+    				<h3 class="panel-title">Новости</h3>
+  				</div>
+		{% endif %}
+			<div class="panel-body">
+				<p>{{ sale.salestext }}</p>
+				<small>{% if sale.datecr %}{{ sale.datecr|date('Y-m-d') }}{% endif %}</small>
+				{% if app.session.get('login') %}
+        		<a href="{{ path('sale_edit', { 'id': sale.id }) }}">Править</a>
+				{% endif %}
+			</div>
+			</div>
+	{%endfor%}
+<nav>
+    {{ knp_pagination_render(pagination) }}
+</nav>		
 
-        <ul>
-        <li>
-            <a href="{{ path('sale_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+</div>
+{% endblock %}

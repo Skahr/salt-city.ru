@@ -1,0 +1,19 @@
+<div style="display: table; text-align: center; width: 100%">
+{% for entity in entities %}
+	
+	<div class="panel panel-info" style="display: table-cell; width: 25%">
+		<div class="panel-heading"><h1>{{ entity.pricename }}</h1></div>
+  		<div class="panel-body">
+			<h2>{{ entity.price }} &#8381;</h2>
+			<p>1 человек</p>
+			<p>30 минут</p>
+		</div>
+		{% if entity.priceinfo %}
+		<div class="panel-footer" style="background: white">{{ entity.priceinfo }}</div>
+		{% endif %}
+	</div>
+	{% if loop.index % 4 == 0 %}
+		</div><div style="display: table; text-align: center; width: 100%">
+	{% endif %}
+{% endfor %}
+</div>
