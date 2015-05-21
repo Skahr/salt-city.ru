@@ -1,0 +1,45 @@
+admin:
+    path:     /
+    defaults: { _controller: "SkahrSaltCityBundle:Admin:index" }
+
+admin_show:
+    path:     /{id}/show
+    defaults: { _controller: "SkahrSaltCityBundle:Admin:show" }
+
+admin_new:
+    path:     /new
+    defaults: { _controller: "SkahrSaltCityBundle:Admin:new" }
+
+admin_create:
+    path:     /create
+    defaults: { _controller: "SkahrSaltCityBundle:Admin:create" }
+    methods:  POST
+
+admin_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SkahrSaltCityBundle:Admin:edit" }
+
+admin_update:
+    path:     /{id}/update
+    defaults: { _controller: "SkahrSaltCityBundle:Admin:update" }
+    methods:  [POST, PUT]
+
+admin_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SkahrSaltCityBundle:Admin:delete" }
+    methods:  [POST, DELETE]
+admin_passchange:
+    path:     /change
+    defaults: { _controller: "SkahrSaltCityBundle:Admin:passChange" }
+    methods:  POST
+admin_login:
+    path:     /login
+    defaults: { _controller: "SkahrSaltCityBundle:Admin:login" }
+    methods:  POST
+admin_logout:
+    path:     /logout
+    defaults: { _controller: "SkahrSaltCityBundle:Admin:logout" }
+admin_passreset:
+    path:     /reset
+    defaults: { _controller: "SkahrSaltCityBundle:Admin:passReset" }
+    methods:  POST

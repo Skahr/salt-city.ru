@@ -54,8 +54,8 @@
 							<li><a href="{{ path('SkahrSaltCityBundle_homepage') }}#contacts">Контакты</a></li>
 							<li class="{{ app.request.attributes.get('_route') == 'comment' ? 'active' }}"><a href="{{ path('comment') }}">Отзывы</a></li>
 							{% if app.session.get('login') %}
-								<li><a href="{{ path('SkahrSaltCityBundle_admin') }}">Админка</a></li>
-								<li><a href="{{ path('SkahrSaltCityBundle_logout') }}">Выйти</a></li>
+								<li><a href="{{ path('admin') }}">Админка</a></li>
+								<li><a href="{{ path('admin_logout') }}">Выйти</a></li>
 							{% endif %}
 						</ul>
 					</div>

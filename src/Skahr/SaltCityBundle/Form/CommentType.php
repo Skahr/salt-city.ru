@@ -23,9 +23,6 @@ class CommentType extends AbstractType
             ->add('username', 'text', array('label' => 'Ваше имя'))
             ->add('usermessage', 'textarea', array('label' => 'Отзыв'))
 			;
-			
-			
-			
 		$builder
 			->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event){
         

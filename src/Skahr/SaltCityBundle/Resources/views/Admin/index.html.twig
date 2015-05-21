@@ -1,0 +1,40 @@
+{% extends 'SkahrSaltCityBundle::base.html.twig' %}
+{% block title %}Админка{% endblock%}
+
+{% block body %}
+<div class="container">
+	{% if app.session.get('login') %}
+    <h2>Управление контентом</h2>
+	<div>
+		<a href="#form" data-toggle="collapse"><h3>Сменить пароль</h3></a>
+		<div id="form" class="collapse {% if app.request.attributes.get('_route') == 'admin_passchange' %}in{% endif %}">{{ form(passchange_form) }}</div>
+		<br/>
+	</div>
+	<p>
+		<a href="{{ path('comment') }}">Все отзывы</a>
+		<a href="{{ path('comment_new') }}">Написать отзыв</a>
+	</p>
+	<p>
+		<a href="{{ path('sale') }}">Все события</a>
+		<a href="{{ path('sale_new') }}">Создать событие</a>
+	</p>
+	<p>
+		<a href="{{ path('price') }}">Все тарифы</a>
+		<a href="{{ path('price_new') }}">Создать тариф</a>
+	</p>
+	{% else %}
+	<div class="container">
+    <h2>Вход в админку</h2>
+	<div>
+		<a href="#form" data-toggle="collapse">восстановить пароль</a>
+		<div id="form" class="collapse">{{ form(passreset_form) }}</div>
+		<br/>
+	</div>
+		<br/>
+    <div class="login">
+		{{ form(login_form) }}
+    </div>
+</div>
+{% endif %}
+</div>
+{% endblock %}

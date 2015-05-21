@@ -1,3 +1,7 @@
+skahr_salt_city_admin:
+    resource: "@SkahrSaltCityBundle/Resources/config/routing/admin.yml"
+    prefix:   /admin
+
 SkahrSaltCityBundle_sale:
     resource: "@SkahrSaltCityBundle/Resources/config/routing/sale.yml"
     prefix:   /sale
@@ -52,25 +56,5 @@ SkahrSaltCityBundle_salt_contraindications:
 SkahrSaltCityBundle_salt_cert:
     pattern: /salt/cert
     defaults: { _controller: SkahrSaltCityBundle:Page:saltCert }
-    requirements:
-        _method: GET
-SkahrSaltCityBundle_login:
-    pattern: /login
-    defaults: { _controller: SkahrSaltCityBundle:Page:login }
-    requirements:
-        _method: GET
-SkahrSaltCityBundle_login_check:
-    pattern: /login/check
-    defaults: { _controller: SkahrSaltCityBundle:Page:check }
-    requirements:
-        _method: POST
-SkahrSaltCityBundle_logout:
-    pattern: /logout
-    defaults: { _controller: SkahrSaltCityBundle:Page:logout }
-    requirements:
-        _method: GET
-SkahrSaltCityBundle_admin:
-    pattern: /admin
-    defaults: { _controller: SkahrSaltCityBundle:Page:admin }
     requirements:
         _method: GET

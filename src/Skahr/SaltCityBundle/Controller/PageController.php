@@ -54,7 +54,7 @@ class PageController extends Controller
                 
                 $session->set('login', $_POST['email']);
 				$this->get('session')->getFlashBag()->set('info', 'Добро пожаловать, '.$session->get('login'));
-				return $this->redirect($this->generateUrl('SkahrSaltCityBundle_admin'));
+				return $this->redirect($this->generateUrl('admin'));
             }
 			else {
 				$this->get('session')->getFlashBag()->set('error', 'Неверные учетные данные');
