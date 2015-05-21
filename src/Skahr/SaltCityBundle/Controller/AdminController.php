@@ -4,7 +4,7 @@ namespace Skahr\SaltCityBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Skahr\SaltCityBundle\Entity\Reset;
 use Skahr\SaltCityBundle\Entity\Admin;
 use Skahr\SaltCityBundle\Form\AdminType;
 
@@ -48,6 +48,7 @@ class AdminController extends Controller
 			}
 			else {
 				$this->get('session')->getFlashBag()->set('error', 'Неверные учетные данные');
+				//password_hash($data['password'], PASSWORD_DEFAULT)
 			}
 			
 			return $this->redirect($this->generateUrl('admin'));
@@ -86,28 +87,34 @@ class AdminController extends Controller
 			$em = $this->getDoctrine()->getManager();
         	$entity = $em->getRepository('SkahrSaltCityBundle:Admin')->findOneByEmail($data['email']);
 			if($entity) {
-				$rand=substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10);
-				$entity->setPassword(password_hash($rand, PASSWORD_DEFAULT));
+				$rand=substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 20);
+				$reset = $em->getRepository('SkahrSaltCityBundle:Reset')->findOneByUserid($entity->getId());
+				if(!$reset) {
+					$reset = new Reset(); $reset->setUserid($entity->getId());
+				}
+				$reset->setHash($rand);
+				$em->persist($reset);
+				//$entity->setPassword(password_hash($rand, PASSWORD_DEFAULT));
             	$em->flush();
 				$message = \Swift_Message::newInstance()
         			->setSubject('Соль Сити: Сброс пароля')
-        			->setFrom('w1nterx44@gmail.com')
+        			->setFrom('mail@salt-city.ru')
         			->setTo($data['email'])
         			->setBody(
             			$this->renderView(
                 			'SkahrSaltCityBundle:Emails:password_reset.html.twig',
-                			array('name' => $entity->getLogin(), 'password' => $rand)
+                			array('name' => $entity->getLogin(), 'link' => $this->generateUrl('admin_passresetcheck', array('id' => $entity->getId(), 'hash' => $rand)))
             			),
             			'text/html'
         			)
     			;
     			$this->get('mailer')->send($message);
 		
-				$this->get('session')->getFlashBag()->set('info', 'Новый пароль был выслан на указанный Вами ящик');
-				//return $this->redirect($this->generateUrl('admin'));
+				$this->get('session')->getFlashBag()->set('info', 'Инструкции по смене пароля были высланы на указанный Вами почтовый ящик');
+				return $this->redirect($this->generateUrl('admin'));
 			}
 			else {
-				$this->get('session')->getFlashBag()->set('error', 'Указанный Вами ящик не закреплен ни за одним из пользователей');
+				$this->get('session')->getFlashBag()->set('error', 'Указанный Вами почтовый ящик не закреплен ни за одним из пользователей');
 				return $this->redirect($this->generateUrl('admin'));
 			}
 		}
@@ -117,6 +124,57 @@ class AdminController extends Controller
 			'login_form' => $this->createLoginForm()->createView(),
 			'passreset_form' => $this->createPassResetForm()->createView()
         ));
+	}
+	public function passResetCheckAction($id, $hash)
+	{
+		$em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('SkahrSaltCityBundle:Reset')->findOneByUserid($id);
+		if($entity) {
+			if($entity->getHash()==$hash) {
+				return $this->render('SkahrSaltCityBundle:Admin:reset.html.twig', array(
+				'passresetfin_form' => $this->createPassResetFinForm($id, $hash)->createView()));
+			}
+		}
+		$this->get('session')->getFlashBag()->set('error', 'Ссылка не верна или уже не активна');
+		return $this->redirect($this->generateUrl('admin'));
+	}
+	public function passResetCheckPostAction(Request $request, $id, $hash)
+	{
+		$passResetFinForm = $this->createPassResetFinForm($id, $hash);
+        $passResetFinForm->handleRequest($request);
+		if ($passResetFinForm->isValid()) {
+			$data=$passResetFinForm->getData();
+			$em = $this->getDoctrine()->getManager();
+        	$entity = $em->getRepository('SkahrSaltCityBundle:Admin')->findOneById($id);
+			$reset = $em->getRepository('SkahrSaltCityBundle:Reset')->findOneByUserid($id);
+			if (!$entity) {
+            	throw $this->createNotFoundException('Unable to find Admin entity.');
+        	}
+			$entity->setPassword(password_hash($data['password'], PASSWORD_DEFAULT));
+			$em->remove($reset);
+			$em->flush();
+			$this->get('session')->getFlashBag()->set('info', 'Пароль изменен');
+			return $this->redirect($this->generateUrl('admin'));
+		}
+		$this->get('session')->getFlashBag()->set('error', 'Пароли не совпадают');
+		return $this->redirect($this->generateUrl('admin_passresetcheck', array('id' => $id, 'hash' => $hash)));
+	}
+	private function createPassResetFinForm($id, $hash)
+	{
+		return $this->createFormBuilder()
+            ->setAction($this->generateUrl('admin_passresetcheckpost', array('id' => $id, 'hash' => $hash)))
+            ->setMethod('POST')
+			->add('password', 'repeated', array(
+    			'type' => 'password',
+				'invalid_message' => 'Пароли должны совпадать',
+    			'first_name'      => 'pswrd',
+    			'second_name'     => 'confirmpswrd',
+				'first_options'  => array('label' => 'Новый пароль'),
+    			'second_options' => array('label' => 'Повторите новый пароль'),
+))
+            ->add('submit', 'submit', array('label' => 'Изменить'))
+            ->getForm()
+        ;
 	}
 	private function createPassResetForm()
     {
@@ -175,7 +233,7 @@ class AdminController extends Controller
 			->add('old_password', 'password', array('label' => 'Старый пароль'))
 			->add('password', 'repeated', array(
     			'type' => 'password',
-				'invalid_message' => 'Passwords have to be equal.',
+				'invalid_message' => 'Пароли должны совпадать',
     			'first_name'      => 'pass',
     			'second_name'     => 'confirm',
 				'first_options'  => array('label' => 'Новый пароль'),

@@ -1,0 +1,14 @@
+Skahr\SaltCityBundle\Entity\Reset:
+    type: entity
+    table: reset
+    id:
+        userid:
+            type: integer
+    fields:
+        hash:
+            type: string
+            length: 255
+        datecr:
+            type: datetime
+    lifecycleCallbacks:
+        prePersist: [ setDatecrValue ]

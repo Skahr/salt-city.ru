@@ -5,9 +5,9 @@ namespace Skahr\SaltCityBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Sale
+ * Comment
  */
-class Sale
+class Comment
 {
     /**
      * @var integer
@@ -17,12 +17,22 @@ class Sale
     /**
      * @var string
      */
-    private $salestext;
+    private $username;
+
+    /**
+     * @var string
+     */
+    private $usermessage;
 
     /**
      * @var integer
      */
     private $status;
+
+    /**
+     * @var string
+     */
+    private $adminreply;
 
     /**
      * @var \DateTime
@@ -41,33 +51,56 @@ class Sale
     }
 
     /**
-     * Set salestext
+     * Set username
      *
-     * @param string $salestext
-     * @return Sale
+     * @param string $username
+     * @return Comment
      */
-    public function setSalestext($salestext)
+    public function setUsername($username)
     {
-        $this->salestext = $salestext;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * Get salestext
+     * Get username
      *
      * @return string 
      */
-    public function getSalestext()
+    public function getUsername()
     {
-        return $this->salestext;
+        return $this->username;
+    }
+
+    /**
+     * Set usermessage
+     *
+     * @param string $usermessage
+     * @return Comment
+     */
+    public function setUsermessage($usermessage)
+    {
+        $this->usermessage = $usermessage;
+
+        return $this;
+    }
+
+    /**
+     * Get usermessage
+     *
+     * @return string 
+     */
+    public function getUsermessage()
+    {
+        return $this->usermessage;
     }
 
     /**
      * Set status
      *
      * @param integer $status
-     * @return Sale
+     * @return Comment
      */
     public function setStatus($status)
     {
@@ -87,10 +120,33 @@ class Sale
     }
 
     /**
+     * Set adminreply
+     *
+     * @param string $adminreply
+     * @return Comment
+     */
+    public function setAdminreply($adminreply)
+    {
+        $this->adminreply = $adminreply;
+
+        return $this;
+    }
+
+    /**
+     * Get adminreply
+     *
+     * @return string 
+     */
+    public function getAdminreply()
+    {
+        return $this->adminreply;
+    }
+
+    /**
      * Set datecr
      *
      * @param \DateTime $datecr
-     * @return Sale
+     * @return Comment
      */
     public function setDatecr($datecr)
     {
@@ -114,33 +170,5 @@ class Sale
     public function setDatecrValue()
     {
         $this->datecr = new \DateTime();
-    }
-    /**
-     * @var integer
-     */
-    private $cat;
-
-
-    /**
-     * Set cat
-     *
-     * @param integer $cat
-     * @return Sale
-     */
-    public function setCat($cat)
-    {
-        $this->cat = $cat;
-
-        return $this;
-    }
-
-    /**
-     * Get cat
-     *
-     * @return integer 
-     */
-    public function getCat()
-    {
-        return $this->cat;
     }
 }

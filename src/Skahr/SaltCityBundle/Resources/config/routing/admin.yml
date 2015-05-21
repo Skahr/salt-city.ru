@@ -43,3 +43,10 @@ admin_passreset:
     path:     /reset
     defaults: { _controller: "SkahrSaltCityBundle:Admin:passReset" }
     methods:  POST
+admin_passresetcheck:
+    path:     /check/{id}/{hash}
+    defaults: { _controller: "SkahrSaltCityBundle:Admin:passResetCheck" }
+admin_passresetcheckpost:
+    path:     /checkpost/{id}/{hash}
+    defaults: { _controller: "SkahrSaltCityBundle:Admin:passResetCheckPost" }
+    methods:  POST
