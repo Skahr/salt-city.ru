@@ -10,10 +10,6 @@ SkahrSaltCityBundle_price:
     resource: "@SkahrSaltCityBundle/Resources/config/routing/price.yml"
     prefix:   /price
 
-SkahrSaltCityBundle_news:
-    resource: "@SkahrSaltCityBundle/Resources/config/routing/news.yml"
-    prefix:   /news
-
 SkahrSaltCityBundle_comment:
     resource: "@SkahrSaltCityBundle/Resources/config/routing/comment.yml"
     prefix:   /comment

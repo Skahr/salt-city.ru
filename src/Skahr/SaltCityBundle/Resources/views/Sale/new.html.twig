@@ -5,7 +5,7 @@
 {% if app.session.get('login') %}
 
     <h1>Создание события</h1>
-    <a href="{{ path('sale') }}">назад</a>
+    <a href="{{ app.request.headers.get('referer') }}">назад</a>
 	<br/>
     {{ form(form) }}
 

@@ -108,4 +108,32 @@ class Price
     {
         return $this->priceinfo;
     }
+    /**
+     * @var integer
+     */
+    private $seats;
+
+
+    /**
+     * Set seats
+     *
+     * @param integer $seats
+     * @return Price
+     */
+    public function setSeats($seats)
+    {
+        $this->seats = $seats;
+
+        return $this;
+    }
+
+    /**
+     * Get seats
+     *
+     * @return integer 
+     */
+    public function getSeats()
+    {
+        return $this->seats;
+    }
 }

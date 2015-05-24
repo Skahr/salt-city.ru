@@ -105,28 +105,6 @@ class CommentController extends Controller
     }
 
     /**
-     * Finds and displays a Comment entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('SkahrSaltCityBundle:Comment')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Comment entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('SkahrSaltCityBundle:Comment:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
      * Displays a form to edit an existing Comment entity.
      *
      */

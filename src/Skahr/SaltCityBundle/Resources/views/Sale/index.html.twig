@@ -5,50 +5,34 @@
     <h1>События</h1>
 	{% if app.session.get('login') %}
 	<a href="{{ path('sale_new') }}">Создать новое событие</a>
+	<br/>
 	{% endif %}
-{#
-        {% for entity in entities %}
-		
-            {% if entity.cat %}
-			<div class="panel panel-danger">
-				<div class="panel-heading">
-    				<h3 class="panel-title">Акция</h3>
-  				</div>
-			{% else %}
-			<div class="panel panel-info">
-				<div class="panel-heading">
-    				<h3 class="panel-title">Новости</h3>
-  				</div>
-			{% endif %}
-			<div class="panel-body">
-				<p>{{ entity.salestext }}</p>
-				<small>{% if entity.datecr %}{{ entity.datecr|date('Y-m-d') }}{% endif %}</small>
-				{% if app.session.get('login') %}
-        		<a href="{{ path('sale_edit', { 'id': entity.id }) }}">Править</a>
-				{% endif %}
-			</div>
-			</div>
-        {% endfor %}
-#}
+
 	{% for sale in pagination %}
 		{% if sale.cat %}
 			<div class="panel panel-danger">
 				<div class="panel-heading">
     				<h3 class="panel-title">Акция</h3>
-  				</div>
 		{% else %}
 			<div class="panel panel-info">
 				<div class="panel-heading">
     				<h3 class="panel-title">Новости</h3>
-  				</div>
 		{% endif %}
-			<div class="panel-body">
-				<p>{{ sale.salestext }}</p>
-				<small>{% if sale.datecr %}{{ sale.datecr|date('Y-m-d') }}{% endif %}</small>
-				{% if app.session.get('login') %}
+					{% if app.session.get('login') %}
+						{% if sale.status %}
+							<span class="label label-info">в ленте</span>
+						{% else %}
+							<span class="label label-warning">нет в ленте</span>
+						{% endif %}
+					{% endif %}
+				</div>
+		<div class="panel-body">
+			<p>{{ sale.salestext }}</p>
+			<small>{% if sale.datecr %}{{ sale.datecr|date('Y-m-d') }}{% endif %}</small>
+			{% if app.session.get('login') %}
         		<a href="{{ path('sale_edit', { 'id': sale.id }) }}">Править</a>
-				{% endif %}
-			</div>
+			{% endif %}
+		</div>
 			</div>
 	{%endfor%}
 <nav>

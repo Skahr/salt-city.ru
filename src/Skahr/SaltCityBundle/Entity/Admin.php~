@@ -114,26 +114,4 @@ class Admin
         return $this->password;
     }
 
-    /**
-     * Set master
-     *
-     * @param integer $master
-     * @return Admin
-     */
-    public function setMaster($master)
-    {
-        $this->master = $master;
-
-        return $this;
-    }
-
-    /**
-     * Get master
-     *
-     * @return integer 
-     */
-    public function getMaster()
-    {
-        return $this->master;
-    }
 }

@@ -1,22 +1,16 @@
 {% extends 'SkahrSaltCityBundle::base.html.twig' %}
 {% block body -%}
 <div class="container">
-{% if app.session.get('login') %}
+	{% if app.session.get('login') %}
 
-    <h1>Правка отзыва</h1>
-  {#  {{ form_start(edit_form) }}
+    	<h1>Правка отзыва</h1>
+		<a href="{{ path('comment') }}">назад</a>
 
-    {{ form(edit_form) }}
-	{{ form_row(edit_form.status) }}
-    {{ form_end(edit_form) }}
-#}
 	{{ form(edit_form) }}
 	{{ form(delete_form) }}
-	<br/>
-	<a href="{{ path('comment') }}">назад</a>
 
-{% else %}
-	<div class="alert alert-danger" role="alert">Доступ запрещен</div>
-{% endif %}
+	{% else %}
+		<div class="alert alert-danger" role="alert">Доступ запрещен</div>
+	{% endif %}
 </div>
 {% endblock %}

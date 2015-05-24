@@ -12,9 +12,7 @@ Skahr\SaltCityBundle\Entity\Admin:
         email:
             type: string
             length: 255
+            unique: true
         password:
             type: string
             length: 255
-        master:
-            type: integer
-            nullable: true

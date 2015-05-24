@@ -112,28 +112,6 @@ class SaleController extends Controller
     }
 
     /**
-     * Finds and displays a Sale entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('SkahrSaltCityBundle:Sale')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Sale entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('SkahrSaltCityBundle:Sale:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
      * Displays a form to edit an existing Sale entity.
      *
      */

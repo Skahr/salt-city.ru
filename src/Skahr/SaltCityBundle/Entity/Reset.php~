@@ -5,19 +5,19 @@ namespace Skahr\SaltCityBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * News
+ * Reset
  */
-class News
+class Reset
 {
     /**
      * @var integer
      */
-    private $id;
+    private $userid;
 
     /**
      * @var string
      */
-    private $newstext;
+    private $hash;
 
     /**
      * @var \DateTime
@@ -26,43 +26,56 @@ class News
 
 
     /**
-     * Get id
+     * Set userid
      *
-     * @return integer 
+     * @param integer $userid
+     * @return Reset
      */
-    public function getId()
+    public function setUserid($userid)
     {
-        return $this->id;
-    }
-
-    /**
-     * Set newstext
-     *
-     * @param string $newstext
-     * @return News
-     */
-    public function setNewstext($newstext)
-    {
-        $this->newstext = $newstext;
+        $this->userid = $userid;
 
         return $this;
     }
 
     /**
-     * Get newstext
+     * Get userid
+     *
+     * @return integer 
+     */
+    public function getUserid()
+    {
+        return $this->userid;
+    }
+
+    /**
+     * Set hash
+     *
+     * @param string $hash
+     * @return Reset
+     */
+    public function setHash($hash)
+    {
+        $this->hash = $hash;
+
+        return $this;
+    }
+
+    /**
+     * Get hash
      *
      * @return string 
      */
-    public function getNewstext()
+    public function getHash()
     {
-        return $this->newstext;
+        return $this->hash;
     }
 
     /**
      * Set datecr
      *
      * @param \DateTime $datecr
-     * @return News
+     * @return Reset
      */
     public function setDatecr($datecr)
     {

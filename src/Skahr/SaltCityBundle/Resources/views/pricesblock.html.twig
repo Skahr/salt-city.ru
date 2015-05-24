@@ -4,9 +4,9 @@
 	<div class="panel panel-info" style="display: table-cell; width: 25%">
 		<div class="panel-heading"><h1>{{ entity.pricename }}</h1></div>
   		<div class="panel-body">
-			<h2>{{ entity.price }} &#8381;</h2>
-			<p>1 человек</p>
-			<p>30 минут</p>
+			<h1>{{ entity.price }} &#8381;</h1>
+			<h2 style="color: #98d8e0"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  {{ entity.seats }}</h2>
+			<h3 style="color: #98d8e0"><span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>   30</h3>
 		</div>
 		{% if entity.priceinfo %}
 		<div class="panel-footer" style="background: white">{{ entity.priceinfo }}</div>

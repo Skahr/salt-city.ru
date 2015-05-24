@@ -7,14 +7,10 @@
 	
 	<div class="form">
     	{{ form(form) }}
-
-
 	</div>
 
 {% for comment in pagination %}
-
 <div class="panel panel-info">
-  <!-- Default panel contents -->
 	<div class="panel-heading">
 		<h4 style="color: black;">{{ comment.username }}:</h4>
 		{% if comment.datecr %}
@@ -37,11 +33,6 @@
 		<h4>Соль Сити:</h4>
     	<p>{{ comment.adminreply }}</p>
   	</div>
-<!--
-		<table class="table table-bordered">
-			<tr><td class="text-right" width=20%>СольCity:</td><td>{{ comment.adminreply }}</td></tr>
-		</table>
--->
 	{% endif %}
 </div>
 {% endfor %}

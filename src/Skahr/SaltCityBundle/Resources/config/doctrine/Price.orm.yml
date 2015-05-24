@@ -15,3 +15,5 @@ Skahr\SaltCityBundle\Entity\Price:
         priceinfo:
             type: text
             nullable: true
+        seats:
+            type: integer

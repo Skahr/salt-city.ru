@@ -12,6 +12,7 @@
                 <th>Тариф</th>
                 <th>Стоимость сеанса</th>
                 <th>Подробности</th>
+				<th>Кол-во мест</th>
                 {% if app.session.get('login') %}<th>Админ</th>{% endif %}
             </tr>
         </thead>
@@ -21,6 +22,7 @@
                 <td>{{ entity.pricename }}</td>
                 <td>{{ entity.price }}</td>
                 <td>{{ entity.priceinfo }}</td>
+				<td>{{ entity.seats }}</td>
                 {% if app.session.get('login') %}<td><a href="{{ path('price_edit', { 'id': entity.id }) }}">править</a></td>{% endif %}
             </tr>
         {% endfor %}

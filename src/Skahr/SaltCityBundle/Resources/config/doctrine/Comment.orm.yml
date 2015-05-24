@@ -14,7 +14,6 @@ Skahr\SaltCityBundle\Entity\Comment:
         status:
             type: integer
             nullable: true
-            default: 0
         adminreply:
             type: text
             nullable: true

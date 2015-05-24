@@ -1,8 +1,12 @@
 {% extends 'SkahrSaltCityBundle::base.html.twig' %}
 {% block body -%}
 <div class="container">
-    <h1>Создать тариф</h1>
-	<a href="{{ path('price') }}">назад</a>
-    {{ form(form) }}
+	{% if app.session.get('login') %}
+    	<h1>Создать тариф</h1>
+		<a href="{{ app.request.headers.get('referer') }}">назад</a>
+    	{{ form(form) }}
+	{% else %}
+		<div class="alert alert-danger" role="alert">Доступ запрещен</div>
+	{% endif %}
 </div>
 {% endblock %}

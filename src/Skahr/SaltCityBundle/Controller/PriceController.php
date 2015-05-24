@@ -33,7 +33,7 @@ class PriceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery(
-                'SELECT p.pricename, p.price, p.priceinfo
+                'SELECT p.pricename, p.price, p.priceinfo, p.seats
                 FROM SkahrSaltCityBundle:Price p'
             )->setMaxResults($max);
 		$entities = $query->getResult();
@@ -97,28 +97,6 @@ class PriceController extends Controller
         return $this->render('SkahrSaltCityBundle:Price:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a Price entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('SkahrSaltCityBundle:Price')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Price entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('SkahrSaltCityBundle:Price:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
