@@ -1,92 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 	<head>
   		<meta charset="utf-8">
-    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
     	<title>{% block title %}Ваше здоровье в Ваших руках!{% endblock %} | СольCity</title>
-      	<!--[if lt IE 9]>
-      		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      	<![endif]-->
+		<meta name="description" content="SaltCity">  
+		<meta name="author" content="Trofimov Anton">
+		<link rel="icon" href="{{ asset('favicon.ico') }}" />
       	{% block stylesheets %}
-      		<link href='http://fonts.googleapis.com/css?family=Marck+Script&subset=latin-ext,cyrillic' rel='stylesheet' type='text/css'>
         	<link href='http://fonts.googleapis.com/css?family=Jura:600&subset=cyrillic' rel='stylesheet' type='text/css'>
-			<link href="{{ asset('fonts/webserveroff_regular/stylesheet.css') }}" rel='stylesheet' type="text/css">
-        	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-			<link href="{{ asset('css/salt.css') }}" rel="stylesheet">
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+			<link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+			<link href="{{ asset('css/saltcity.css') }}" rel="stylesheet">
       	{% endblock %}
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
   	</head>
-  	<body>
-		<div class="wrap">
-		<a id="top"></a>
-  		<div class="container">
-			<table style="width: 100%"><tr><td rowspan="2" width="440px">
-			<div>
-        		
-        		<a href="{{ path('SkahrSaltCityBundle_homepage') }}"><img src="{{ asset('images/logo.png') }}"/></a>
-      		</div>
-				</td><td style="padding-left: 25px;"><h3 style="line-height: 80%; margin-top: 40px">Записаться на сеанс в Новосибирске</h3><h2 style="line-height: 80%;">380-90-04</h2></td>
-				</tr>
-<tr><td>
-				<nav class="navbar navbar-static-bottom">
+  	<body data-spy="scroll" data-target=".navbar">
+        <section id="top"></section>	
 
-					<div id="navbar" class="navbar-collapse collapse">
-						<ul class="nav navbar-nav">
-							<li class="{{ app.request.attributes.get('_route') == 'SkahrSaltCityBundle_homepage' ? 'active' }}"><a href="{{ path('SkahrSaltCityBundle_homepage') }}">Главная</a></li>
-							<li class="dropdown {{ 'SkahrSaltCityBundle_salt' in app.request.attributes.get('_route') ? 'active' }}"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Соляная пещера <span class="caret"></span></a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="{{ path('SkahrSaltCityBundle_salt') }}">О соляной пещере</a></li>
-									<li><a href="{{ path('SkahrSaltCityBundle_salt_photo') }}">Галерея</a></li>
-									<li><a href="{{ path('SkahrSaltCityBundle_salt_indications') }}">Показания</a></li>
-									<li><a href="{{ path('SkahrSaltCityBundle_salt_contraindications') }}">Противопоказания</a></li>
-									<li><a href="{{ path('SkahrSaltCityBundle_salt_rules') }}">Правила посещения</a></li>
-									<li><a href="{{ path('SkahrSaltCityBundle_salt_cert') }}">Сертификаты</a></li>
-								</ul>
-							</li>
-							<li class="{{ app.request.attributes.get('_route') == 'price' ? 'active' }}"><a href="{{ path('SkahrSaltCityBundle_homepage') }}#prices">Цены</a></li>
-							<li><a href="{{ path('SkahrSaltCityBundle_homepage') }}#contacts">Контакты</a></li>
-							<li class="{{ app.request.attributes.get('_route') == 'comment' ? 'active' }}"><a href="{{ path('comment') }}">Отзывы</a></li>
-							{% if app.session.get('login') %}
-								<li><a href="{{ path('admin') }}">Админка</a></li>
-								<li><a href="{{ path('admin_logout') }}">Выйти</a></li>
-							{% endif %}
-						</ul>
-					</div>
-				</nav>
-	</td></tr></table>
-			
+		<div class="navbar-wrapper">
+		  <div class="container">
+			<nav class="navbar navbar-default navbar-fixed-top">
+			  <div class="container">
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Показать меню</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				  <a class="navbar-brand" href="{{ path('SkahrSaltCityBundle_homepage') }}">Соль City</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+				  <ul id="scrollspynav" class="nav navbar-nav">
+					<li><a href="{{ app.request.attributes.get('_route') != 'SkahrSaltCityBundle_homepage' ? path('SkahrSaltCityBundle_homepage') }}#top">Главная</a></li>
+					<li><a href="{{ app.request.attributes.get('_route') != 'SkahrSaltCityBundle_homepage' ? path('SkahrSaltCityBundle_homepage') }}#salt">О соляной пещере</a></li>
+					<li><a href="{{ app.request.attributes.get('_route') != 'SkahrSaltCityBundle_homepage' ? path('SkahrSaltCityBundle_homepage') }}#prices">Цены</a></li>
+					<li><a href="{{ app.request.attributes.get('_route') != 'SkahrSaltCityBundle_homepage' ? path('SkahrSaltCityBundle_homepage') }}#contact">Контакты</a></li>
+					<li class="{{ app.request.attributes.get('_route') == 'comment' ? 'active' }}"><a href="{{ path('comment') }}">Отзывы</a></li>
+				  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                      {% if app.session.get('login') %}
+                        <li class="dropdown {{ 'admin' in app.request.attributes.get('_route') ? 'active' }}">
+                          <a href="{{ path('admin') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Админка <span class="caret"></span></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ path('admin') }}">Админка</a></li>
+                            <li><a href="{{ path('admin_logout') }}">Выход</a></li>
+                          </ul>
+                        </li>
+                      {% else %}
+                      <li><a href="{{ app.request.attributes.get('_route') != 'SkahrSaltCityBundle_homepage' ? path('SkahrSaltCityBundle_homepage') }}#phone">(383) 380-90-04</a></li>
+                      {% endif %}
+                  </ul>
+				</div>
+			  </div>
+			</nav>
+		  </div>
+		</div>
 
+        {% for flashMessage in app.session.flashbag.get('info') %}
+        <div class="alert alert-success" role="alert"><div class="container">{{ flashMessage }}</div></div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger" role="alert"><div class="container">{{ flashMessage }}</div></div>
+        {% endfor %}
+        
+        {% block sales %}{% endblock %}
+        
+        {% block body %}{% endblock %}
 
-{% for flashMessage in app.session.flashbag.get('info') %}
-	<div class="alert alert-success" role="alert">{{ flashMessage }}</div>
-{% endfor %}
-{% for flashMessage in app.session.flashbag.get('error') %}
-	<div class="alert alert-danger" role="alert">{{ flashMessage }}</div>
-{% endfor %}
-            </div>
-               {% block sales %}{% endblock %}
-               {% block body %}{% endblock %}
-</div>
-            <div id="footer">
-                {% block footer %}
-				<a href="#top"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a>
-					<p>СольCity входит в содружество Галофорт</p><p>2015</p>
-                {% endblock %}
-            </div>
+        {% block footer %}
+            <footer class="footer">
+                <div class="container">
+                    <a href="#top"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a>
+                    <p>СольCity входит в содружество Галофорт</p><p>2015</p>
+                </div>
+            </footer>
+        {% endblock %}
+
         {% block javascripts %}
-            <!-- Bootstrap core JavaScript
-            ================================================== -->
-            <!-- Placed at the end of the document so the pages load faster -->
+
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
             <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-            
             <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
             <script src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
         {% endblock %}

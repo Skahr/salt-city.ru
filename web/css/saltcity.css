@@ -1,0 +1,53 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1d959a; font-family: 'Jura', sans-serif;
+}
+section {
+    padding-top: 40px
+}
+.navbar {
+    border-bottom: none;
+}
+.navbar a {
+    font-family: 'Jura', sans-serif;
+}
+a.navbar-brand {
+    font-size: 20px;
+}
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+.carousel-caption { font-family: 'Jura', sans-serif; text-shadow: 2px 2px black; position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto; width: 60%; display: table;
+}
+.carousel-caption h1 {
+	color: white; pointer-events: none; padding: 10px; font-family: 'Open Sans Condensed', sans-serif; font-size: 4vw;
+}
+.carousel-caption a { color: white; text-shadow: 2px 2px black; font-size: 2vw; }
+footer {
+    text-align: center;
+    color: #bababa;
+}
+footer a {
+    display: inline-block;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.alert {
+    margin-top: 10px;
+}
+.well {margin-top: 20px}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  border: 2px solid #49babf; border-bottom: none;
+}
+.modal {
+    top: 5%;
+}

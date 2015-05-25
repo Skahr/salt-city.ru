@@ -19,38 +19,8 @@ SkahrSaltCityBundle_homepage:
     defaults: { _controller: SkahrSaltCityBundle:Page:index }
     requirements:
         _method:  GET
-SkahrSaltCityBundle_contacts:
-    pattern: /contacts
-    defaults: { _controller: SkahrSaltCityBundle:Page:contacts }
-    requirements:
-        _method: GET
-SkahrSaltCityBundle_salt:
-    pattern: /salt
-    defaults: { _controller: SkahrSaltCityBundle:Page:salt }
-    requirements:
-        _method: GET
 SkahrSaltCityBundle_salt_photo:
     pattern: /salt/photo/{id}
     defaults: { _controller: SkahrSaltCityBundle:Page:saltPhoto, id: 0 }
-    requirements:
-        _method: GET
-SkahrSaltCityBundle_salt_rules:
-    pattern: /salt/rules
-    defaults: { _controller: SkahrSaltCityBundle:Page:saltRules }
-    requirements:
-        _method: GET
-SkahrSaltCityBundle_salt_indications:
-    pattern: /salt/indications
-    defaults: { _controller: SkahrSaltCityBundle:Page:saltIndications }
-    requirements:
-        _method: GET
-SkahrSaltCityBundle_salt_contraindications:
-    pattern: /salt/contr
-    defaults: { _controller: SkahrSaltCityBundle:Page:saltContraindications }
-    requirements:
-        _method: GET
-SkahrSaltCityBundle_salt_cert:
-    pattern: /salt/cert
-    defaults: { _controller: SkahrSaltCityBundle:Page:saltCert }
     requirements:
         _method: GET

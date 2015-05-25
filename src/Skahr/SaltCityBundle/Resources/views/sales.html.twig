@@ -1,24 +1,18 @@
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
       
       <div class="carousel-inner" role="listbox">
-		  {% for entity in entities %}
-		  	<div class="item
-		  	{% if loop.first %}
-		  		 active
-		  	{% endif %}
-			">
-			<img class="first-slide" src="{{ asset('images/bckg/pic' ~ loop.index ~ '_blur.jpg') }}">
-
-			<div class="carousel-caption">
-              <h1>{{ entity.salestext }}</h1>
-              <p><a href="{{ path('sale') }}">все события</a></p>
-
-              
+          <div class="item active">
+			<img class="first-slide" src="{{ asset('images/bckg/pic0_logo.jpg') }}">
             </div>
-			
-        </div>
+		  {% for entity in entities %}
+		  	<div class="item">
+                <img class="first-slide" src="{{ asset('images/bckg/pic' ~ loop.index ~ '_blur.jpg') }}">
+                <div class="carousel-caption">
+                  <h1>{{ entity.salestext }}</h1>
+                  <p><a href="{{ path('sale') }}">все события</a></p>
+                </div>
+            </div>
 		  {% endfor %}
 		  
       </div>
