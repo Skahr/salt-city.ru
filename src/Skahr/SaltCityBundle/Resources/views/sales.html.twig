@@ -5,9 +5,12 @@
           <div class="item active">
 			<img class="first-slide" src="{{ asset('images/bckg/pic0_logo.jpg') }}">
             </div>
+          {% set string = "123456789" %}
 		  {% for entity in entities %}
+            {% set i = random(string) %}
+            {% set string = string|trim(i) %}
 		  	<div class="item">
-                <img class="first-slide" src="{{ asset('images/bckg/pic' ~ loop.index ~ '_blur.jpg') }}">
+                <img class="first-slide" src="{{ asset('images/bckg/pic' ~ i ~ '_blur.jpg') }}">
                 <div class="carousel-caption">
                   <h1>{{ entity.salestext }}</h1>
                   <p><a href="{{ path('sale') }}">все события</a></p>

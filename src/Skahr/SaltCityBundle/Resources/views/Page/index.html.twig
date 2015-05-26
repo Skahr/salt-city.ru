@@ -7,15 +7,11 @@
 {% endblock %}
 {% block body %}
 
-
 <section id="salt">
     <div class="container text-justify">
 	   <h2>Помните, Ваше здоровье в Ваших руках!</h2>
 	   <p>Только у нас можно окунуться в восхитительный мир гармонии души и тела! Специалисты Соль Сити воссоздали целебный микроклимат  настоящих соляных подземных пещер! Благодаря такому ПРАВИЛЬНОМУ микроклимату Ваши лёгкие очистятся и запустится механизм самоочищения, улучшится самочувствие, окрепнет иммунитет, ну а наша уютная обстановка, поможет Вам расслабиться, избавиться от стрессов, обрести душевное равновесие. Мы не предлагаем Вам медицинскую услугу, наше кредо - это здоровый образ жизни! Прогулки на свежем воздухе, закаливание, занятия физкультурой + соляная пещера Соль Сити- всё вместе поможет Вам снизить медикаментозную нагрузку на организм при различных заболеваниях легких, астме, аллергии, а также частых ОРВИ и гриппе.</p>
-	
-	
         <h3>Что такое соляная пещера?</h3>
-
         <p>
             <em>Соляная пещера (галотерапия)</em> – это созданная руками профессионалов настоящая пещера, с  особым микроклиматом, сходным с микроклиматом подземных соляных пещер, который характеризуется гипоаллергенной и гипобактериальной воздушной средой, аэроионизацией, комфортными микроклиматическими условиями, а также специальным аудио-психотерапевтическим воздействием.
         </p>
@@ -24,46 +20,45 @@
             <em>ГАЛОТЕРАПИЯ</em> имеет общеукрепляющий, очищающий эффект, поэтому она показана ВСЕМ ЖИТЕЛЯМ БОЛЬШИХ ГОРОДОВ, работникам офисов, дышащих загрязненным кондиционированным воздухом, и в особенности курильщикам. 
         </p>
     </div>
-        
-        <div role="tabpanel">
-            <div class="container">
-              <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#photo" aria-controls="photo" role="tab" data-toggle="tab"><h4>Галерея</h4></a></li>
-                <li role="presentation"><a href="#about" aria-controls="about" role="tab" data-toggle="tab"><h4>О соляной пещере</h4></a></li>
-                <li role="presentation"><a href="#indications" aria-controls="indications" role="tab" data-toggle="tab"><h4>Показания</h4></a></li>
-                <li role="presentation"><a href="#contr" aria-controls="contr" role="tab" data-toggle="tab"><h4>Противопоказания</h4></a></li>
-                <li role="presentation"><a href="#rules" aria-controls="rules" role="tab" data-toggle="tab"><h4>Правила посещения</h4></a></li>
-                <li role="presentation"><a href="#certs" aria-controls="certs" role="tab" data-toggle="tab"><h4>Сертификаты</h4></a></li>
-              </ul>
-            </div>
-            <div style="background: #49babf">
-                <div class="container text-justify">
-                  <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="photo">
-                        <div class="row" style="padding-top: 20px">
-                                {% for i in 1..12 %}
-                                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                                    <a class="thumbnail" data-remote="{{ path('SkahrSaltCityBundle_salt_photo', { 'id': i }) }}" data-toggle="modal" data-target="#myModal{{ i }}">
-                                        <img class="img-responsive" src="{{ asset('images/photos/pic' ~ i ~ '.jpg') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="modal fade" id="myModal{{ i }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                        </div>
+    <div role="tabpanel">
+        <div class="container">
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#photo" aria-controls="photo" role="tab" data-toggle="tab"><h4>Галерея</h4></a></li>
+            <li role="presentation"><a href="#about" aria-controls="about" role="tab" data-toggle="tab"><h4>О соляной пещере</h4></a></li>
+            <li role="presentation"><a href="#indications" aria-controls="indications" role="tab" data-toggle="tab"><h4>Показания</h4></a></li>
+            <li role="presentation"><a href="#contr" aria-controls="contr" role="tab" data-toggle="tab"><h4>Противопоказания</h4></a></li>
+            <li role="presentation"><a href="#rules" aria-controls="rules" role="tab" data-toggle="tab"><h4>Правила посещения</h4></a></li>
+            <li role="presentation"><a href="#certs" aria-controls="certs" role="tab" data-toggle="tab"><h4>Сертификаты</h4></a></li>
+          </ul>
+        </div>
+        <div class="about-bg">
+            <div class="container text-justify">
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="photo">
+                    <div class="row" style="padding-top: 20px">
+                            {% for i in 1..12 %}
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <a class="thumbnail" data-remote="{{ path('SkahrSaltCityBundle_salt_photo', { 'id': i }) }}" data-toggle="modal" data-target="#myModal{{ i }}">
+                                    <img class="img-responsive" src="{{ asset('images/photos/pic' ~ i ~ '.jpg') }}" alt="">
+                                </a>
+                            </div>
+                            <div class="modal fade" id="myModal{{ i }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
                                     </div>
-                                </div> 
-                                {% endfor %}
-                        </div>
-                      </div>
-                    <div role="tabpanel" class="tab-pane well" id="about">{{ include('SkahrSaltCityBundle:Page:salt.html.twig') }}</div>
-                    <div role="tabpanel" class="tab-pane well" id="indications">{{ include('SkahrSaltCityBundle:Page:salt_indications.html.twig') }}</div>
-                    <div role="tabpanel" class="tab-pane well" id="contr">{{ include('SkahrSaltCityBundle:Page:salt_contr.html.twig') }}</div>
-                    <div role="tabpanel" class="tab-pane well" id="rules">{{ include('SkahrSaltCityBundle:Page:salt_rules.html.twig') }}</div>
-                    <div role="tabpanel" class="tab-pane well" id="certs">{{ include('SkahrSaltCityBundle:Page:salt_cert.html.twig') }}</div>
+                                </div>
+                            </div> 
+                            {% endfor %}
+                    </div>
                   </div>
+                  <div role="tabpanel" class="tab-pane well" id="about">{{ include('SkahrSaltCityBundle:Page:salt.html.twig') }}</div>
+                  <div role="tabpanel" class="tab-pane well" id="indications">{{ include('SkahrSaltCityBundle:Page:salt_indications.html.twig') }}</div>
+                  <div role="tabpanel" class="tab-pane well" id="contr">{{ include('SkahrSaltCityBundle:Page:salt_contr.html.twig') }}</div>
+                  <div role="tabpanel" class="tab-pane well" id="rules">{{ include('SkahrSaltCityBundle:Page:salt_rules.html.twig') }}</div>
+                  <div role="tabpanel" class="tab-pane well" id="certs">{{ include('SkahrSaltCityBundle:Page:salt_cert.html.twig') }}</div>
                 </div>
             </div>
+        </div>
     </div>
 </section>
 <br/>
@@ -78,34 +73,29 @@
         </div>
     </div>
 </section>
-<section id="contact"><a id="phone"></a>
-    <div style="text-align: justify; background: #38a0a5; padding: 10px; padding-bottom: 20px;">
+<a id="phone"></a>
+<section id="contact">
+    <div class="phone-bg">
         <div class="container">
-           <h2 style="line-height: 200%;  color: white;">Записаться на сеанс в соляную пещеру "Соль Сити" вы всегда можете по телефону единой справочной:</h2>
-           <h1 style="color: white;">(383) 380-90-04</h1>
+           <h2>Записаться на сеанс в соляную пещеру "Соль Сити" вы всегда можете по телефону единой справочной:</h2>
+           <h1>(383) 380-90-04</h1>
         </div>
     </div>
-    <div style="background: #1d959a; padding-bottom: 20px; border-bottom: 1px solid grey">
+    <div class="contact-bg">
         <div class="container">
-            <h1 style="color: white">Найти нас легко:</h1>
+            <h1>Найти нас легко:</h1>
             <p class="well">Телефон единой справочной: <strong>(383) 380-90-04</strong></p>
             <p class="well">Адрес: г. Новосибирск, ул. Тихвинская, д. 1<br/>
            Время работы: Пн-Пт: 9<sup> 00</sup> - 21<sup> 00</sup>, Сб-Вс: 10<sup> 00</sup> - 18<sup> 00</sup>
             </p>
             <div class="row">
-            <div class="col-lg-6 col-md-6 col-xs-12">
-                <img class="img-responsive" src="{{ asset('images/photos/pic11.jpg') }}">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <img class="img-responsive" src="{{ asset('images/photos/pic11.jpg') }}">
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <img class="img-responsive" src="https://api-maps.yandex.ru/services/constructor/1.0/static/?sid=eiI1WZ1jnRtnrspbLhvlwgp4Lk3_3ift&width=600&height=400" alt=""/>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-xs-12">
-                <img class="img-responsive" src="https://api-maps.yandex.ru/services/constructor/1.0/static/?sid=eiI1WZ1jnRtnrspbLhvlwgp4Lk3_3ift&width=600&height=400" alt=""/>
-            </div>
-            </div>
-<!--
-            <div style="float: left; margin-right: 20px">
-                <script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=eiI1WZ1jnRtnrspbLhvlwgp4Lk3_3ift&width=600&height=300"></script>
-            </div>
-            <div><img src="{{ asset('images/photos/thumb_outer.jpg') }}"></div>
--->
         </div>
     </div>
 </section>

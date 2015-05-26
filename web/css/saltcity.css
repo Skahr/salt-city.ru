@@ -4,16 +4,16 @@ h3,
 h4,
 h5,
 h6 {
-  color: #1d959a; font-family: 'Jura', sans-serif;
+  color: #1d949a; font-family: 'Open Sans Condensed', sans-serif;
 }
 section {
-    padding-top: 40px
+    padding-top: 50px
 }
 .navbar {
-    border-bottom: none;
+    border-bottom: 10px solid #1d949a;
 }
 .navbar a {
-    font-family: 'Jura', sans-serif;
+    font-family: 'Jura', sans-serif; color: #1d949a;;
 }
 a.navbar-brand {
     font-size: 20px;
@@ -21,17 +21,18 @@ a.navbar-brand {
 .carousel-control.left, .carousel-control.right {
     background-image: none
 }
-.carousel-caption { font-family: 'Jura', sans-serif; text-shadow: 2px 2px black; position: absolute;
+.carousel-caption { font-family: 'Jura', sans-serif; text-shadow: 0 0 5px #1d949a, 0 0 8px black; position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   margin: auto; width: 60%; display: table;
+  border-radius: 30px;
 }
 .carousel-caption h1 {
 	color: white; pointer-events: none; padding: 10px; font-family: 'Open Sans Condensed', sans-serif; font-size: 4vw;
 }
-.carousel-caption a { color: white; text-shadow: 2px 2px black; font-size: 2vw; }
+.carousel-caption a { color: white; text-shadow: 0 0 4px black; font-size: 2vw; text-decoration: underline; }
 footer {
     text-align: center;
     color: #bababa;
@@ -46,8 +47,29 @@ footer a {
 }
 .well {margin-top: 20px}
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
-  border: 2px solid #49babf; border-bottom: none;
+  border: 2px solid #3aa7ac; border-bottom: none;
 }
 .modal {
     top: 5%;
+}
+.label {
+    background: #1d949a;
+}
+.about-bg {
+    background: #3aa7ac;
+}
+.phone-bg {
+    text-align: justify; background: #048389; padding: 10px; padding-bottom: 20px;
+}
+.phone-bg h1, .phone-bg h2 {
+    color: white;
+}
+.phone-bg h2 {
+    line-height: 200%;
+}
+.contact-bg {
+    background: #01666a; padding-bottom: 20px; border-bottom: 1px solid grey;
+}
+.contact-bg h1 {
+    color: white;
 }
