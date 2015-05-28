@@ -96,20 +96,22 @@ class AdminController extends Controller
 				//$entity->setPassword(password_hash($rand, PASSWORD_DEFAULT));
             	$em->flush();
 				$message = \Swift_Message::newInstance()
-        			->setSubject('Соль Сити: Сброс пароля')
-        			->setFrom('mail@salt-city.ru')
+        			->setSubject('Соль Сити: восстановление пароля')
+        			->setFrom(array('mail@salt-city.ru' => 'СольCity'))
         			->setTo($data['email'])
         			->setBody(
             			$this->renderView(
                 			'SkahrSaltCityBundle:Emails:password_reset.html.twig',
-                			array('name' => $entity->getLogin(), 'link' => $this->generateUrl('admin_passresetcheck', array('id' => $entity->getId(), 'hash' => $rand)))
+                			array('name' => $entity->getLogin(), 'link' => $this->generateUrl('admin_passresetcheck', array('id' => $entity->getId(), 'hash' => $rand), true))
             			),
             			'text/html'
         			)
     			;
-    			$this->get('mailer')->send($message);
-		
-				$this->get('session')->getFlashBag()->set('info', 'Инструкции по смене пароля были высланы на указанный Вами почтовый ящик');
+    			if($this->get('mailer')->send($message)) {
+				    $this->get('session')->getFlashBag()->set('info', 'Инструкции по смене пароля были высланы на указанный Вами почтовый ящик');
+                } else {
+                    $this->get('session')->getFlashBag()->set('error', 'Ошибка отправки');
+                }
 				return $this->redirect($this->generateUrl('admin'));
 			}
 			else {

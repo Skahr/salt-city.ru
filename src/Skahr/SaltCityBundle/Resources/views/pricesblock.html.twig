@@ -4,7 +4,7 @@
             <div class="panel-heading">
                 {% if entity.priceinfo %}
                 <a data-toggle="collapse" href="#collapseP{{ loop.index }}" aria-expanded="false" style="display: block; height: 100%">
-                    <h1>{{ entity.pricename }}*</h1>
+                    <h1>{{ entity.pricename }} <small style="color: #1d959a"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></small></h1>
                 </a>
                 {% else %}
                     <h1>{{ entity.pricename }}</h1>
