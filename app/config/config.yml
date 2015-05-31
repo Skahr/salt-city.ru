@@ -75,3 +75,8 @@ swiftmailer:
     port:                 587
     disable_delivery:     false
     logging:              "%kernel.debug%"
+services:
+    twig.extension.array:
+        class: Twig_Extensions_Extension_Array
+        tags:
+           - { name: twig.extension }

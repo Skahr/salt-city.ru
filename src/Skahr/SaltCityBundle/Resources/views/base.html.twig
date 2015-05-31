@@ -4,9 +4,10 @@
   		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-    	<title>{% block title %}Ваше здоровье в Ваших руках!{% endblock %} | СольCity</title>
-		<meta name="description" content="SaltCity">  
+    	<title>{% block title %}Соляная пещера{% endblock %} | Соль City</title>
+		<meta name="description" content="Соль City - соляная пещера в Новосибирске. Ваше здоровье в Ваших руках!">  
 		<meta name="author" content="Trofimov Anton">
+        <meta name="robots" content="INDEX, NOFOLLOW">
 		<link rel="icon" href="{{ asset('favicon.ico') }}" />
       	{% block stylesheets %}
         	<link href='http://fonts.googleapis.com/css?family=Jura:600&subset=cyrillic' rel='stylesheet' type='text/css'>
@@ -87,8 +88,6 @@
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
             <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-            <script src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
         {% endblock %}
 		
     </body>

@@ -1,6 +1,6 @@
 skahr_salt_city_admin:
     resource: "@SkahrSaltCityBundle/Resources/config/routing/admin.yml"
-    prefix:   /admin
+    prefix:   /saltmaster
 
 SkahrSaltCityBundle_sale:
     resource: "@SkahrSaltCityBundle/Resources/config/routing/sale.yml"
