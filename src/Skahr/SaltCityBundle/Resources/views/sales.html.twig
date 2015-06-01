@@ -1,9 +1,17 @@
+<!--[if lt IE 10]>
+    <style type="text/css">
+        .first-slide {
+            filter: alpha(Opacity=70); /* Прозрачность в IE */
+        }
+        .item {background-color: black; }
+    </style>
+<![endif]-->
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
       
       <div class="carousel-inner" role="listbox">
           <div class="item active">
-			<img class="first-slide" src="{{ asset('images/bckg/pic0_logo.jpg') }}">
+			<img src="{{ asset('images/bckg/pic0_logo.jpg') }}">
             </div>
           {% set array = [1, 2, 3, 4, 5, 6, 7, 8, 9]|shuffle %}
 		  {% for entity in entities %}
@@ -25,4 +33,4 @@
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
-    </div><!-- /.carousel -->
+</div><!-- /.carousel -->
